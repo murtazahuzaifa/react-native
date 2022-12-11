@@ -1,0 +1,13 @@
+https://www.youtube.com/watch?v=0-S5a0eXPoc&t=2897s
+
+docs.nativebase.io/docs
+
+react-native 14 hours course
+https://www.youtube.com/watch?v=AkEnidfZnCU
+
+npx create-expo-app -t <app-name>
+
+expo with typescript docs
+https://docs.expo.dev/guides/typescript/
+
+tailwindcss-react-native
