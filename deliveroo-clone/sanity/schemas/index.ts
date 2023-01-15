@@ -4,4 +4,4 @@ import restaurant from './restaurant';
 import featured from './featured';
 import dish from './dish';
 
-export const schemaTypes = [restaurant, dish, category, blockContent, featured];
+export default [restaurant, dish, category, blockContent, featured];

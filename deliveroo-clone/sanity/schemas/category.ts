@@ -1,6 +1,6 @@
-import { defineField, defineType } from 'sanity'
+import { SchemaTypeDefinition } from 'sanity'
 
-export default defineType({
+const entity: SchemaTypeDefinition = {
   name: 'category',
   title: 'Menu Category',
   type: 'document',
@@ -10,9 +10,12 @@ export default defineType({
       title: 'Title',
       type: 'string',
       validation: Rule => Rule.required(),
+      //@ts-ignore
+      codegen: { required: true },
     },
     {
       name: "image", type: "image", title: "Image of Category",
     },
   ],
-})
+}
+export default entity;

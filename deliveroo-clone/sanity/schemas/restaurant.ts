@@ -10,10 +10,14 @@ const entity: SchemaTypeDefinition = {
     {
       name: 'name', title: 'Name', type: 'string',
       validation: Rule => Rule.required(),
+      //@ts-ignore
+      codegen: { required: true },
     },
     {
       name: 'short_description', title: 'Short Description', type: 'string',
       validation: Rule => Rule.required(),
+      //@ts-ignore
+      codegen: { required: true },
     },
     {
       name: "image", type: "image", title: "Image of the Restaurant",
@@ -26,15 +30,21 @@ const entity: SchemaTypeDefinition = {
     },
     {
       name: "address", type: "string", title: "Restaurant address",
-      validation: rule => rule.required()
+      validation: rule => rule.required(),
+      //@ts-ignore
+      codegen: { required: true },
     },
     {
       name: "rating", type: "number", title: "Enter a Rating from (1-5 Stars)",
-      validation: Rule => Rule.required().min(1).max(5).error("Please enter a Value between 1 and 5")
+      validation: Rule => Rule.required().min(1).max(5).error("Please enter a Value between 1 and 5"),
+      //@ts-ignore
+      codegen: { required: true },
     },
     {
       name: "type", title: "Category", validation: rule => rule.required(),
-      type: "reference", to: [{ type: "category" }]
+      type: "reference", to: [{ type: "category" }],
+      //@ts-ignore
+      codegen: { required: true },
     },
     {
       name: "dishes", type: "array", title: "Dishes",

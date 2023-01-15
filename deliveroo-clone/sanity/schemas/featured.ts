@@ -1,4 +1,4 @@
-import { defineField, defineType, SchemaTypeDefinition } from 'sanity';
+import { SchemaTypeDefinition } from 'sanity';
 
 
 const entity: SchemaTypeDefinition = {
@@ -6,12 +6,22 @@ const entity: SchemaTypeDefinition = {
     type: "document",
     title: "Featured Menu categories",
     fields: [
-        { name: "name", type: "string", title: "Featured Category name", validation: rule => rule.required() },
-        { name: "short_description", type: "string", title: "Short Description", validation: rule => rule.required() },
+        {
+            name: "name", type: "string", title: "Featured Category name", validation: rule => rule.required(),
+            //@ts-ignore
+            codegen: { required: true },
+        },
+        {
+            name: "short_description", type: "string", title: "Short Description", validation: rule => rule.required(),
+            //@ts-ignore
+            codegen: { required: true },
+        },
         {
             name: "restaurants", type: "array", title: "Restaurants",
             validation: rule => rule.required(),
-            of: [{ type: "reference", to: [{ type: "restaurant" }] }]
+            of: [{ type: "reference", to: [{ type: "restaurant" }] }],
+            //@ts-ignore
+            codegen: { required: true },
         },
     ]
 }
