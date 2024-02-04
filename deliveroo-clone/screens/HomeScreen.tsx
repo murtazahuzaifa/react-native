@@ -6,13 +6,14 @@ import { ChevronDownIcon, UserIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 import sanityClient from '../sanity';
+import { Featured } from '../types/sanity';
 
 
 const HomeScreen = () => {
     const navigation = useNavigation();
     // const dimension = Dimensions.get("screen");
     // console.log("Dimensions", Platform.OS, dimension)
-    const [featuredCategories, setFeaturedCategories] = useState([]);
+    const [featuredCategories, setFeaturedCategories] = useState<Featured[]>([]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -22,7 +23,7 @@ const HomeScreen = () => {
 
     useEffect(() => {
         (async () => {
-            const data = await sanityClient.fetch<Object[]>(`
+            const data = await sanityClient.fetch<Featured[]>(`
                 *[_type == "featured"] {
                     ...,
                     restaurants[]->{
@@ -32,6 +33,7 @@ const HomeScreen = () => {
                 }
             `);
             // console.log(data)
+            setFeaturedCategories(data);
 
         })()
     }, [])
@@ -71,9 +73,14 @@ const HomeScreen = () => {
                 <Categories />
 
                 {/* Featured Rows */}
-                <FeaturedRow id='featured' title='Featured' description='Paid placements from our partners' />
+                {/* <FeaturedRow id='featured' title='Featured' description='Paid placements from our partners' />
                 <FeaturedRow id='discounts' title='Discounts' description="Everyone's been enjoying times juicy discounts" />
-                <FeaturedRow id='offers' title='Offers near you!' description="Why not support your local restaurant tonight!" />
+                <FeaturedRow id='offers' title='Offers near you!' description="Why not support your local restaurant tonight!" /> */}
+                {featuredCategories.map((c, idx) => {
+                    return <FeaturedRow key={idx}
+                        id={c._id} title={c.name} description={c.short_description}
+                    />
+                })}
 
             </ScrollView>
 

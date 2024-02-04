@@ -1,7 +1,17 @@
 import React, { FC } from 'react'
-import { ImageBackground, StyleSheet, View, StatusBar, Image, Text, } from 'react-native';
+import { ImageBackground, StyleSheet, View, StatusBar, Image, Text, Button, } from 'react-native';
+import { AdjustEvent, AdjustConfig } from 'react-native-adjust';
+import { ADJUST_EVENTS, Adjust } from '../../adjust.config';
 
 const WelcomeScreen: FC = ({ }) => {
+
+    const handleClick = () => {
+        const adjustEvent = new AdjustEvent(ADJUST_EVENTS.follow_event);
+        // adjustEvent.
+        Adjust.trackEvent(adjustEvent);
+        console.log("follow_event_called")
+    }
+
     return (
         <ImageBackground style={styles.background} source={{ uri: "https://picsum.photos/200/300" }}>
             {/* <StatusBar hidden /> */}
@@ -10,7 +20,9 @@ const WelcomeScreen: FC = ({ }) => {
                 <Text>Sell what you don't need</Text>
             </View>
             <View style={styles.loginButton} ></View>
-            <View style={styles.registerButton} ></View>
+            <View style={styles.registerButton} >
+                <Button onPress={handleClick} title='Follow' />
+            </View>
         </ImageBackground>
     )
 }

@@ -1,16 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import {
   StyleSheet, Text, View, Image, SafeAreaView, StatusBar as _StatusBar, Dimensions,
   TouchableHighlight, TouchableOpacity, TouchableWithoutFeedback, Button, Alert, Platform,
 } from 'react-native';
 import { useDimensions, useDeviceOrientation, } from "@react-native-community/hooks";
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import { Adjust } from 'react-native-adjust';
 
 //https://amanhimself.dev/blog/safe-area-context-in-react-native-apps/
 // import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function App() {
+
+  useEffect(() => {
+    
+    return () => Adjust.componentWillUnmount();
+  }, [])
   // console.log("Hello");
   // console.log("Dimensions", Dimensions.get("window"))
   return (

@@ -24,14 +24,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.murtazahuzaifa.firstapp"
     },
     "web": {
       "favicon": "./app/assets/favicon.png",
       "build": {
         "babel": {
-          "include": [""]
+          "include": [
+            ""
+          ]
         }
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6adc4580-2525-4c13-9973-2ee22480aa54"
       }
     }
   }
